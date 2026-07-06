@@ -1,0 +1,11 @@
+{
+	"id": "pangadeck",
+	"name": "Panga Deck",
+	"display_name": "Panga Deck",
+	"author": ["Pangaea47","CTEH"],
+	"description": "",
+	"prefix": "panga",
+	"main_file": "main.lua",
+	"priority": 0,
+	"version": "1.0.0"
+}
