@@ -13,9 +13,11 @@ target = '=[SMODS _ "src/overrides.lua"]'
 pattern = '''
 self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, _center.atlas or 'centers', _center.pos)
 '''
-position = 'at'
+position = 'after'
 payload = '''
-self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, 'panga_card_centers', _center.pos)
+if _center.set == 'Default' or _center.set == 'Enhanced' then
+        self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, 'panga_card_centers', _center.pos)
+end
 '''
 match_indent = true
 
