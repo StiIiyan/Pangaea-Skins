@@ -5,25 +5,22 @@ priority = 0
 
 
 
-# Change the card center setting
-# (currently kinda hard coded, probably could make the _center.atlas equal the custom atlas but idk where it's set)
+# Change the default center position and change its respective atlas
 [[patches]]
 [patches.pattern]
-target = '=[SMODS _ "src/overrides.lua"]'
+target = 'game.lua'
 pattern = '''
-self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, _center.atlas or 'centers', _center.pos)
+        c_base={max = 500, freq = 1, line = 'base', name = "Default Base", pos = {x=1,y=0}, set = "Default", label = 'Base Card', effect = "Base", cost_mult = 1.0, config = {}},
 '''
-position = 'after'
+position = 'at'
 payload = '''
-if _center.set == 'Default' or _center.set == 'Enhanced' then
-        self.children.center = SMODS.create_sprite(self.T.x, self.T.y, self.T.w, self.T.h, 'panga_card_centers', _center.pos)
-end
+        c_base={max = 500, freq = 1, line = 'base', name = "Default Base", pos = {x=0,y=0}, set = "Default", label = 'Base Card', effect = "Base", cost_mult = 1.0, config = {}, atlas = 'panga_card_centers'},
 '''
 match_indent = true
 
 
 
-# Change the enhancement positions in their respective file
+# Change the enhancement center positions and change their respective atlases
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
@@ -39,15 +36,13 @@ pattern = '''
 '''
 position = 'at'
 payload = '''
-        m_bonus =   {max = 500, order = 2, name = "Bonus", set = "Enhanced", pos = {x=2,y=0}, effect = "Bonus Card", label = "Bonus Card", config = {bonus=30}},
-        m_mult =    {max = 500, order = 3, name = "Mult", set = "Enhanced", pos = {x=3,y=0}, effect = "Mult Card", label = "Mult Card", config = {mult = 4}},
-        m_wild =    {max = 500, order = 4, name = "Wild Card", set = "Enhanced", pos = {x=4,y=0}, effect = "Wild Card", label = "Wild Card", config = {}},
-        m_glass =   {max = 500, order = 5, name = "Glass Card", set = "Enhanced", pos = {x=6,y=0}, effect = "Glass Card", label = "Glass Card", config = {Xmult = 2, extra = 4}},
-        m_steel =   {max = 500, order = 6, name = "Steel Card", set = "Enhanced", pos = {x=7,y=0}, effect = "Steel Card", label = "Steel Card", config = {h_x_mult = 1.5}},
-        m_stone =   {max = 500, order = 7, name = "Stone Card", set = "Enhanced", pos = {x=1,y=0}, effect = "Stone Card", label = "Stone Card", config = {bonus = 50}},
-        m_gold =    {max = 500, order = 8, name = "Gold Card", set = "Enhanced", pos = {x=8,y=0}, effect = "Gold Card", label = "Gold Card", config = {h_dollars = 3}},
-        m_lucky =   {max = 500, order = 9, name = "Lucky Card", set = "Enhanced", pos = {x=5,y=0}, effect = "Lucky Card", label = "Lucky Card", config = {mult=20, p_dollars = 20}},
+        m_bonus =   {max = 500, order = 2, name = "Bonus", set = "Enhanced", pos = {x=2,y=0}, effect = "Bonus Card", label = "Bonus Card", config = {bonus=30}, atlas = 'panga_card_centers'},
+        m_mult =    {max = 500, order = 3, name = "Mult", set = "Enhanced", pos = {x=3,y=0}, effect = "Mult Card", label = "Mult Card", config = {mult = 4}, atlas = 'panga_card_centers'},
+        m_wild =    {max = 500, order = 4, name = "Wild Card", set = "Enhanced", pos = {x=4,y=0}, effect = "Wild Card", label = "Wild Card", config = {}, atlas = 'panga_card_centers'},
+        m_glass =   {max = 500, order = 5, name = "Glass Card", set = "Enhanced", pos = {x=6,y=0}, effect = "Glass Card", label = "Glass Card", config = {Xmult = 2, extra = 4}, atlas = 'panga_card_centers'},
+        m_steel =   {max = 500, order = 6, name = "Steel Card", set = "Enhanced", pos = {x=7,y=0}, effect = "Steel Card", label = "Steel Card", config = {h_x_mult = 1.5}, atlas = 'panga_card_centers'},
+        m_stone =   {max = 500, order = 7, name = "Stone Card", set = "Enhanced", pos = {x=1,y=0}, effect = "Stone Card", label = "Stone Card", config = {bonus = 50}, atlas = 'panga_card_centers'},
+        m_gold =    {max = 500, order = 8, name = "Gold Card", set = "Enhanced", pos = {x=8,y=0}, effect = "Gold Card", label = "Gold Card", config = {h_dollars = 3}, atlas = 'panga_card_centers'},
+        m_lucky =   {max = 500, order = 9, name = "Lucky Card", set = "Enhanced", pos = {x=5,y=0}, effect = "Lucky Card", label = "Lucky Card", config = {mult=20, p_dollars = 20}, atlas = 'panga_card_centers'},
 '''
 match_indent = true
-
-
